@@ -5,7 +5,7 @@ Follow these steps to set up and reproduce the development environment:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/solar-challenge-week1.git
+   git clone https://github.com/Soloparame/solar-challenge-week1.git
    cd solar-challenge-week1
    ```
 
@@ -15,11 +15,7 @@ Follow these steps to set up and reproduce the development environment:
      python3 -m venv venv
      source venv/bin/activate  # Use 'venv\Scripts\activate' on Windows
      ```
-   - Using `conda`:
-     ```bash
-     conda create -n solar_challenge python=3.10 -y
-     conda activate solar_challenge
-     ```
+
 
 3. Install dependencies:
    ```bash

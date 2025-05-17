@@ -11,8 +11,8 @@ solar-challenge-week1/
 ├── .github/
 │   └── workflows/
 │       └── ci.yml
-├── data/                         # Cleaned CSVs (ignored via .gitignore)
-├── notebooks/                   # EDA notebooks for each country
+├── data/                         
+├── notebooks/                   
 │   ├── benin_eda.ipynb
 │   ├── sierra_leone_eda.ipynb
 │   └── togo_eda.ipynb
@@ -23,7 +23,7 @@ solar-challenge-week1/
 │   └── README.md
 ├── tests/
 │   └── __init__.py
-└── venv/                         # Python virtual environment (ignored)
+└── venv/                         
 ```
 
 ---

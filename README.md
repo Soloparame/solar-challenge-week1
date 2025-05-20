@@ -187,36 +187,7 @@ This task involves both analytical comparison of solar data across countries and
 
 ---
 
-## 🧾 Git Best Practices Followed.
 
-
-* ✅ Feature branches per country (`eda-benin`, etc.)
-* ✅ Descriptive commit messages
-* ✅ `.gitignore` avoids committing large/irrelevant files
-* ✅ GitHub Actions for CI (Python setup check)
-* ✅ Pull requests for merging to `main`
-
----
-
-## 📦 Requirements.
-
-All required libraries are listed in `requirements.txt`
-
-## 🔐 .gitignore Highlights.
-
-```gitignore
-# Ignore virtual environments
-venv/
-.env/
-
-# Ignore data
-data/*.csv
-
-# Ignore notebooks' temp files
-**/.ipynb_checkpoints/
-```
-
----
 
 ## 📊 KPIs Achieved
 

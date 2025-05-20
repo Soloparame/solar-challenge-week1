@@ -187,7 +187,8 @@ This task involves both analytical comparison of solar data across countries and
 
 ---
 
-## 🧾 Git Best Practices Followed
+## 🧾 Git Best Practices Followed.
+
 
 * ✅ Feature branches per country (`eda-benin`, etc.)
 * ✅ Descriptive commit messages
@@ -197,11 +198,11 @@ This task involves both analytical comparison of solar data across countries and
 
 ---
 
-## 📦 Requirements
+## 📦 Requirements.
 
 All required libraries are listed in `requirements.txt`
 
-## 🔐 .gitignore Highlights
+## 🔐 .gitignore Highlights.
 
 ```gitignore
 # Ignore virtual environments

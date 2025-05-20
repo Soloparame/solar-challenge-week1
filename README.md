@@ -38,9 +38,13 @@ Edit
 ### 3. Cross-Country Comparison
 - Compared technology usage, demand tiers, and grid proximity
 - Visualized differences using bar plots, pie charts, and scatter plots
-- Summarized insights in notebooks and prepared visuals for the dashboard
 
 ---
+
+## 🐞 Known Issue: pandas Build Failure on Python 3.13
+
+- The current environment uses Python 3.13, which is incompatible with `pandas==2.2.2` due to Cython/C++ build errors.
+- **Workaround:** Use Python 3.11 and `pandas==2.1.3` for successful builds (see CI/CD section below).
 
 ## ⚠️ CI/CD Fixes and Dependency Issues
 

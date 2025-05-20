@@ -73,7 +73,7 @@ solar-challenge-week1/
 
 ---
 
-## 📊 Task 2 — Data Profiling, Cleaning & EDA
+## 📊 Task 2 — Data Profiling, Cleaning & EDA.
 
 Each EDA notebook follows a consistent structure:
 

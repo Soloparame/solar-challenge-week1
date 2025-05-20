@@ -187,6 +187,7 @@ This task involves both analytical comparison of solar data across countries and
 
 ---
 
+<<<<<<< HEAD
 ## 🧾 Git Best Practices Followed
 
 * ✅ Feature branches per country (`eda-benin`, etc.)
@@ -216,6 +217,9 @@ data/*.csv
 ```
 
 ---
+=======
+
+>>>>>>> dashboard-dev
 
 ## 📊 KPIs Achieved
 

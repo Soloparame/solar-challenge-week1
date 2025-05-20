@@ -21,6 +21,10 @@ solar-challenge-week1/
 ├── README.md
 ├── scripts/
 │   └── README.md
+├── app/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── utils.py
 ├── tests/
 │   └── __init__.py
 └── venv/                         
@@ -78,7 +82,7 @@ Each EDA notebook follows a consistent structure:
 | Step                  | Description                                             |
 | --------------------- | ------------------------------------------------------- |
 | 📃 Summary Stats      | `df.describe()`, missing value % check                  |
-| 🧼 Cleaning           | Outlier detection (Z-score), NaN handling (impute/drop) |
+| 🧬 Cleaning           | Outlier detection (Z-score), NaN handling (impute/drop) |
 | 📈 Time Series        | GHI, DNI, DHI, Tamb over time                           |
 | 🧽 Cleaning Impact    | Compare ModA/B pre/post cleaning                        |
 | 📉 Correlation        | Heatmaps, scatter plots (GHI, DNI, Tamb, WS, RH)        |
@@ -103,6 +107,86 @@ Each EDA notebook follows a consistent structure:
 
 ---
 
+## 🌐 Task 3: Cross-Country Comparison & Streamlit Dashboard
+
+This task involves both analytical comparison of solar data across countries and optional development of a dashboard.
+
+### 📊 Objectives
+
+* Synthesize the cleaned datasets from Benin, Sierra Leone, and Togo.
+* Identify relative solar potential and key differences across countries.
+* Optionally, develop a Streamlit dashboard to visualize insights.
+
+### 🔍 Analysis Notebook
+
+* Branch: `compare-countries`
+* Notebook: `notebooks/compare_countries.ipynb`
+* Data used: `data/benin_clean.csv`, `data/sierra_leone_clean.csv`, `data/togo_clean.csv`
+
+### 📊 Analytical Components
+
+* **Metric Comparison**
+
+  * Boxplots of GHI, DNI, DHI (one plot per metric, color-coded by country)
+  * Summary table comparing mean, median, standard deviation across countries
+* **Statistical Testing (Recommended)**
+
+  * One-way ANOVA or Kruskal–Wallis test for GHI values
+  * Report and interpret p-values
+* **Key Observations**
+
+  * 3 bullet points summarizing standout insights (e.g., "Togo shows highest median GHI")
+* **(Bonus) Visual Summary**
+
+  * Bar chart ranking countries by average GHI
+
+### 🌐 (Optional) Streamlit Dashboard
+
+* Branch: `dashboard-dev`
+* Main script: `app/main.py`
+* Utility functions: `app/utils.py`
+
+#### 🔍 Features
+
+| Feature               | Description                                 |
+| --------------------- | ------------------------------------------- |
+| Country Selector      | Widget to select one or multiple countries  |
+| Boxplot Visualization | Interactive boxplot of GHI/DNI/DHI          |
+| Top Regions Table     | Table showing top solar regions per country |
+| CSV Export            | Download option for filtered data           |
+
+### 🚀 Deployment
+
+* Hosted via Streamlit Community Cloud
+* To run locally:
+
+  ```bash
+  streamlit run app/main.py
+  ```
+
+### 🔄 Suggested Folder Structure
+
+```
+├── app
+│   ├── __init__.py
+│   ├── main.py
+│   ├── utils.py
+└── scripts
+    ├── __init__.py
+    └── README.md
+```
+
+### 📊 Key Performance Indicators (KPIs)
+
+* Inclusion of all three countries in comparisons
+* Correct implementation and interpretation of p-values
+* Actionable summary insights
+* Clean UI/UX in dashboard (if built)
+* Working widgets and interactive elements
+* Public deployment (optional)
+
+---
+
 ## 📈 Git Best Practices Followed
 
 * ✅ Feature branches per country (`eda-benin`, etc.)
@@ -123,6 +207,7 @@ numpy
 matplotlib
 seaborn
 scikit-learn
+streamlit
 ```
 
 ---
@@ -147,6 +232,7 @@ data/*.csv
 
 * ✅ Environment setup & CI configured
 * ✅ EDA notebooks with detailed visual insights
+* ✅ Streamlit dashboard with comparative analytics
 * ✅ Branching, committing, merging done cleanly
 * ✅ Clear GitHub project structure for collaboration
 
@@ -154,7 +240,7 @@ data/*.csv
 
 ## 👥 Contributors
 
-* **Your Name** — EDA & Repo Setup
+* **Your Name** — EDA, Dashboard & Repo Setup
 * Add other contributors if applicable...
 
 ---
@@ -164,5 +250,6 @@ data/*.csv
 * [Matplotlib Docs](https://matplotlib.org/stable/index.html)
 * [Pandas Profiling](https://pandas-profiling.github.io/)
 * [Seaborn Gallery](https://seaborn.pydata.org/examples/index.html)
+* [Streamlit Docs](https://docs.streamlit.io/)
 
 ---

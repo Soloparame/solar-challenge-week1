@@ -199,18 +199,7 @@ This task involves both analytical comparison of solar data across countries and
 
 ## 📦 Requirements
 
-All required libraries are listed in `requirements.txt`. Example:
-
-```
-pandas
-numpy
-matplotlib
-seaborn
-scikit-learn
-streamlit
-```
-
----
+All required libraries are listed in `requirements.txt`
 
 ## 🔐 .gitignore Highlights
 

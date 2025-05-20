@@ -1,239 +1,132 @@
-# 🌞 Solar Data Analysis Challenge — Week 1 Report
+# 🌞 Solar Electrification Challenge – Week 0 Report
 
-This project is part of the **Solar Data Analysis Challenge**. Week 1 focuses on repository setup, data cleaning, and exploratory data analysis (EDA) for solar datasets from multiple West African countries.
+## 🔧 Project Setup
 
----
-
-## 📁 Project Structure
-
-```
-solar-challenge-week1/
-├── .github/
-│   └── workflows/
-│       └── ci.yml
-├── data/                         
-├── notebooks/                   
-│   ├── benin_eda.ipynb
-│   ├── sierra_leone_eda.ipynb
-│   └── togo_eda.ipynb
-├── .gitignore
-├── requirements.txt
-├── README.md
-├── scripts/
-│   └── README.md
-├── app/
-│   ├── __init__.py
-│   ├── main.py
-│   ├── utils.py
-├── tests/
-│   └── __init__.py
-└── venv/                         
-```
+This repository contains the Week 0 progress for the Solar Electrification Challenge, focusing on data cleaning, exploration, and comparison across three countries: **Benin**, **Togo**, and **Sierra Leone**.
 
 ---
 
-## 🧩 Task 1 — Git & Environment Setup
+## 📁 Directory Structure
 
-### 📌 Objectives
+├── data/ # Raw input datasets
+├── outputs/ # Cleaned datasets and visualizations
+├── dashboard-dev/ # Streamlit dashboard development branch
+├── notebooks/ # Jupyter Notebooks for EDA and cleaning
+├── .github/workflows/ # CI workflow files
+├── requirements.txt # Python dependencies
+└── README.md # Project documentation
 
-* Get familiar with Git branching and version control.
-* Set up reproducible Python environments.
-
-### 🚀 Setup Instructions
-
-1. **Clone the Repository**
-
-   ```bash
-   git clone https://github.com/Soloparame/solar-challenge-week1.git
-   cd solar-challenge-week1
-   ```
-
-2. **Create Virtual Environment**
-
-   ```bash
-   python -m venv venv
-   source venv/bin/activate    # On Windows: venv\Scripts\activate
-   ```
-
-3. **Install Dependencies**
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Git Branches**
-
-   * `setup-task`: contains initial setup, `.gitignore`, `ci.yml`
-   * `eda-benin`, `eda-togo`, `eda-sierra-leone`: contain country-specific EDA notebooks
-
-5. **GitHub Actions (CI)**
-
-   * On every push, GitHub Actions installs requirements and checks environment.
-   * Workflow file: `.github/workflows/ci.yml`
+yaml
+Copy
+Edit
 
 ---
 
-## 📊 Task 2 — Data Profiling, Cleaning & EDA.
+## ✅ Tasks Completed in Week 0
 
-Each EDA notebook follows a consistent structure:
+### 1. Exploratory Data Analysis (EDA)
+- Loaded and analyzed all datasets
+- Identified missing values, duplicates, outliers
+- Created visual summaries using seaborn and matplotlib
 
-### 🔍 EDA Steps Performed
+### 2. Data Cleaning
+- Unified schemas across the three datasets
+- Imputed missing values, removed duplicates
+- Standardized column names and data types
+- Exported cleaned CSVs to `outputs/`
 
-| Step                  | Description                                             |
-| --------------------- | ------------------------------------------------------- |
-| 📃 Summary Stats      | `df.describe()`, missing value % check                  |
-| 🧬 Cleaning           | Outlier detection (Z-score), NaN handling (impute/drop) |
-| 📈 Time Series        | GHI, DNI, DHI, Tamb over time                           |
-| 🧽 Cleaning Impact    | Compare ModA/B pre/post cleaning                        |
-| 📉 Correlation        | Heatmaps, scatter plots (GHI, DNI, Tamb, WS, RH)        |
-| 🌬️ Wind              | Histograms, wind direction analysis                     |
-| 🌡️ Temperature vs RH | Bubble chart of Tamb vs GHI (size=RH)                   |
-| 📀 Export             | Cleaned CSVs saved to `/data`, not committed to Git     |
-
-### 📘 Notebooks
-
-| Country      | Notebook Path                                                | Branch             |
-| ------------ | ------------------------------------------------------------ | ------------------ |
-| Benin        | [`benin_eda.ipynb`](notebooks/benin_eda.ipynb)               | `eda-benin`        |
-| Sierra Leone | [`sierra_leone_eda.ipynb`](notebooks/sierra_leone_eda.ipynb) | `eda-sierra-leone` |
-| Togo         | [`togo_eda.ipynb`](notebooks/togo_eda.ipynb)                 | `eda-togo`         |
-
-### 🧠 Insights Gained
-
-* **Solar Irradiance Trends**: Seasonal and daily patterns visible across GHI, DNI, DHI.
-* **Sensor Reliability**: Cleaning flags affect ModA/ModB performance.
-* **Temperature Influence**: RH inversely correlates with Tamb and solar efficiency.
-* **Wind Patterns**: Affect cleaning schedules and equipment wear.
+### 3. Cross-Country Comparison
+- Compared technology usage, demand tiers, and grid proximity
+- Visualized differences using bar plots, pie charts, and scatter plots
+- Summarized insights in notebooks and prepared visuals for the dashboard
 
 ---
 
-## 🌍 Task 3 — Cross-Country Comparison & Streamlit Dashboard
+## ⚠️ CI/CD Fixes and Dependency Issues
 
-This task involves both analytical comparison of solar data across countries and optional development of a dashboard.
+### 🛠 Issue: Build Failed on GitHub Actions
 
-### 🎯 Objectives
+The GitHub Actions CI pipeline failed during the **Install Dependencies** step due to a `pandas` build error:
 
-* Synthesize the cleaned datasets from Benin, Sierra Leone, and Togo.
-* Identify relative solar potential and key differences across countries.
-* Optionally, develop a Streamlit dashboard to visualize insights.
+> `error: standard attributes in middle of decl-specifiers`
 
-### 📒 Analysis Notebook
+### 🔍 Root Cause
 
-* Branch: `compare-countries`
-* Notebook: `notebooks/compare_countries.ipynb`
-* Data used: `data/benin_clean.csv`, `data/sierra_leone_clean.csv`, `data/togo_clean.csv`
+- `pandas==2.2.2` was incompatible with the Python version (likely Python 3.13)
+- Certain Cython-based modules could not be compiled due to compiler incompatibility
 
-### 📊 Analytical Components
+### ✅ Solution Applied
 
-* **Metric Comparison**
+#### 1. **Locked Python Version to 3.11**
+Updated `.github/workflows/ci.yml`:
+```yaml
+- name: Set up Python
+  uses: actions/setup-python@v4
+  with:
+    python-version: '3.11'
+2. Pinned pandas to a Stable Version
+Updated requirements.txt:
 
-  * Boxplots of GHI, DNI, DHI (one plot per metric, color-coded by country)
-  * Summary table comparing mean, median, standard deviation across countries
-* **Statistical Testing (Recommended)**
+diff
+Copy
+Edit
+- pandas==2.2.2
++ pandas==2.1.3
+3. Cleared pip Cache Before Installing
+Added to CI workflow:
 
-  * One-way ANOVA or Kruskal–Wallis test for GHI values
-  * Report and interpret p-values
-* **Key Observations**
+yaml
+Copy
+Edit
+- name: Clear pip cache
+  run: |
+    pip cache purge
+4. Local Testing Done
+Tested the environment locally with:
 
-  * 3 bullet points summarizing standout insights (e.g., "Togo shows highest median GHI")
-* **(Bonus) Visual Summary**
+bash
+Copy
+Edit
+python -m venv env
+source env/bin/activate
+pip install -r requirements.txt
+🟢 Result
+CI/CD now runs successfully with all dependencies installed and notebooks tested.
 
-  * Bar chart ranking countries by average GHI
+🚀 How to Run the Project Locally
+bash
+Copy
+Edit
+# Clone the repo
+git clone https://github.com/your-username/solar-challenge-week1.git
+cd solar-challenge-week1
 
-### 🌐 Streamlit Dashboard (Optional)
+# Set up environment
+python -m venv env
+source env/bin/activate
 
-* Branch: `dashboard-dev`
-* Main script: `app/main.py`
-* Utility functions: `app/utils.py`
+# Install dependencies
+pip install -r requirements.txt
 
-#### ⚙️ Features
+# Run dashboard (after Week 1)
+streamlit run dashboard-dev/app.py
+📊 Preview
+EDA visualizations: notebooks/eda_summary.ipynb
 
-| Feature               | Description                                 |
-| --------------------- | ------------------------------------------- |
-| Country Selector      | Widget to select one or multiple countries  |
-| Boxplot Visualization | Interactive boxplot of GHI/DNI/DHI          |
-| Top Regions Table     | Table showing top solar regions per country |
-| CSV Export            | Download option for filtered data           |
+Cleaned CSVs: outputs/
 
-### 🚀 Deployment
+Dashboard preview: Work in progress in dashboard-dev
 
-* Hosted via Streamlit Community Cloud (see [how to deploy](https://docs.streamlit.io/streamlit-community-cloud/get-started/deploy-an-app))
-* To run locally:
+📎 Useful Links
+Workflow File: .github/workflows/ci.yml
 
-  ```bash
-  streamlit run app/main.py
-  ```
+Requirements: requirements.txt
 
-### 📂 Suggested Folder Structure
+Cleaned Data: /outputs/
 
-```
-├── app
-│   ├── __init__.py
-│   ├── main.py
-│   ├── utils.py
-└── scripts
-    ├── __init__.py
-    └── README.md
-```
+Dashboard Dev Branch: dashboard-dev
 
-### 📈 Key Performance Indicators (KPIs)
 
-* [x] Inclusion of all three countries in comparisons
-* [x] Correct implementation and interpretation of p-values
-* [x] Actionable summary insights
-* [x] Clean UI/UX in dashboard (if built)
-* [x] Working widgets and interactive elements
-* [x] Public deployment (optional)
-
----
-
-<<<<<<< HEAD
-## 🧾 Git Best Practices Followed
-
-* ✅ Feature branches per country (`eda-benin`, etc.)
-* ✅ Descriptive commit messages
-* ✅ `.gitignore` avoids committing large/irrelevant files
-* ✅ GitHub Actions for CI (Python setup check)
-* ✅ Pull requests for merging to `main`
-
----
-
-## 📦 Requirements
-
-All required libraries are listed in `requirements.txt`
-
-## 🔐 .gitignore Highlights
-
-```gitignore
-# Ignore virtual environments
-venv/
-.env/
-
-# Ignore data
-data/*.csv
-
-# Ignore notebooks' temp files
-**/.ipynb_checkpoints/
-```
-
----
-=======
-
->>>>>>> dashboard-dev
-
-## 📊 KPIs Achieved
-
-* [x] Environment setup & CI configured
-* [x] EDA notebooks with detailed visual insights
-* [x] Streamlit dashboard with comparative analytics
-* [x] Branching, committing, merging done cleanly
-* [x] Clear GitHub project structure for collaboration
-
-## 📌 References
-
-* [Matplotlib Docs](https://matplotlib.org/stable/index.html)
-* [Pandas Profiling](https://pandas-profiling.github.io/)
-* [Seaborn Gallery](https://seaborn.pydata.org/examples/index.html)
-* [Streamlit Docs](https://docs.streamlit.io/)
-
----
+📅 Status
+✅ Week 0 tasks completed
+🔄 Dashboard development in progress for Week 1

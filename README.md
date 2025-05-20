@@ -1,4 +1,4 @@
-# 🌞 Solar Challenge - Week 1
+# 🌞 Solar Data Analysis Challenge — Week 1 Report
 
 This project is part of the **Solar Data Analysis Challenge**. Week 1 focuses on repository setup, data cleaning, and exploratory data analysis (EDA) for solar datasets from multiple West African countries.
 
@@ -32,7 +32,7 @@ solar-challenge-week1/
 
 ---
 
-## ✅ Task 1: Git & Environment Setup
+## 🧩 Task 1 — Git & Environment Setup
 
 ### 📌 Objectives
 
@@ -73,7 +73,7 @@ solar-challenge-week1/
 
 ---
 
-## 📊 Task 2: Data Profiling, Cleaning & EDA
+## 📊 Task 2 — Data Profiling, Cleaning & EDA.
 
 Each EDA notebook follows a consistent structure:
 
@@ -92,11 +92,11 @@ Each EDA notebook follows a consistent structure:
 
 ### 📘 Notebooks
 
-| Country      | Notebook Path                      | Branch             |
-| ------------ | ---------------------------------- | ------------------ |
-| Benin        | `notebooks/benin_eda.ipynb`        | `eda-benin`        |
-| Sierra Leone | `notebooks/sierra_leone_eda.ipynb` | `eda-sierra-leone` |
-| Togo         | `notebooks/togo_eda.ipynb`         | `eda-togo`         |
+| Country      | Notebook Path                                                | Branch             |
+| ------------ | ------------------------------------------------------------ | ------------------ |
+| Benin        | [`benin_eda.ipynb`](notebooks/benin_eda.ipynb)               | `eda-benin`        |
+| Sierra Leone | [`sierra_leone_eda.ipynb`](notebooks/sierra_leone_eda.ipynb) | `eda-sierra-leone` |
+| Togo         | [`togo_eda.ipynb`](notebooks/togo_eda.ipynb)                 | `eda-togo`         |
 
 ### 🧠 Insights Gained
 
@@ -107,17 +107,17 @@ Each EDA notebook follows a consistent structure:
 
 ---
 
-## 🌐 Task 3: Cross-Country Comparison & Streamlit Dashboard
+## 🌍 Task 3 — Cross-Country Comparison & Streamlit Dashboard
 
 This task involves both analytical comparison of solar data across countries and optional development of a dashboard.
 
-### 📊 Objectives
+### 🎯 Objectives
 
 * Synthesize the cleaned datasets from Benin, Sierra Leone, and Togo.
 * Identify relative solar potential and key differences across countries.
 * Optionally, develop a Streamlit dashboard to visualize insights.
 
-### 🔍 Analysis Notebook
+### 📒 Analysis Notebook
 
 * Branch: `compare-countries`
 * Notebook: `notebooks/compare_countries.ipynb`
@@ -140,13 +140,13 @@ This task involves both analytical comparison of solar data across countries and
 
   * Bar chart ranking countries by average GHI
 
-### 🌐 (Optional) Streamlit Dashboard
+### 🌐 Streamlit Dashboard (Optional)
 
 * Branch: `dashboard-dev`
 * Main script: `app/main.py`
 * Utility functions: `app/utils.py`
 
-#### 🔍 Features
+#### ⚙️ Features
 
 | Feature               | Description                                 |
 | --------------------- | ------------------------------------------- |
@@ -157,14 +157,14 @@ This task involves both analytical comparison of solar data across countries and
 
 ### 🚀 Deployment
 
-* Hosted via Streamlit Community Cloud
+* Hosted via Streamlit Community Cloud (see [how to deploy](https://docs.streamlit.io/streamlit-community-cloud/get-started/deploy-an-app))
 * To run locally:
 
   ```bash
   streamlit run app/main.py
   ```
 
-### 🔄 Suggested Folder Structure
+### 📂 Suggested Folder Structure
 
 ```
 ├── app
@@ -176,18 +176,18 @@ This task involves both analytical comparison of solar data across countries and
     └── README.md
 ```
 
-### 📊 Key Performance Indicators (KPIs)
+### 📈 Key Performance Indicators (KPIs)
 
-* Inclusion of all three countries in comparisons
-* Correct implementation and interpretation of p-values
-* Actionable summary insights
-* Clean UI/UX in dashboard (if built)
-* Working widgets and interactive elements
-* Public deployment (optional)
+* [x] Inclusion of all three countries in comparisons
+* [x] Correct implementation and interpretation of p-values
+* [x] Actionable summary insights
+* [x] Clean UI/UX in dashboard (if built)
+* [x] Working widgets and interactive elements
+* [x] Public deployment (optional)
 
 ---
 
-## 📈 Git Best Practices Followed
+## 🧾 Git Best Practices Followed
 
 * ✅ Feature branches per country (`eda-benin`, etc.)
 * ✅ Descriptive commit messages
@@ -199,18 +199,7 @@ This task involves both analytical comparison of solar data across countries and
 
 ## 📦 Requirements
 
-All required libraries are listed in `requirements.txt`. Example:
-
-```
-pandas
-numpy
-matplotlib
-seaborn
-scikit-learn
-streamlit
-```
-
----
+All required libraries are listed in `requirements.txt`
 
 ## 🔐 .gitignore Highlights
 
@@ -230,20 +219,11 @@ data/*.csv
 
 ## 📊 KPIs Achieved
 
-* ✅ Environment setup & CI configured
-* ✅ EDA notebooks with detailed visual insights
-* ✅ Streamlit dashboard with comparative analytics
-* ✅ Branching, committing, merging done cleanly
-* ✅ Clear GitHub project structure for collaboration
-
----
-
-## 👥 Contributors
-
-* **Your Name** — EDA, Dashboard & Repo Setup
-* Add other contributors if applicable...
-
----
+* [x] Environment setup & CI configured
+* [x] EDA notebooks with detailed visual insights
+* [x] Streamlit dashboard with comparative analytics
+* [x] Branching, committing, merging done cleanly
+* [x] Clear GitHub project structure for collaboration
 
 ## 📌 References
 
